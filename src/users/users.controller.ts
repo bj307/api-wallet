@@ -13,8 +13,14 @@ export class UsersController {
   }
 
   @Get()
-  async listUser() {
+  async listUsers() {
     const users = await this.usersService.list();
     return users;
+  }
+
+  @Get('user')
+  async getUser(@Body() u) {
+    const user = await this.usersService.getUser(u);
+    return user;
   }
 }
