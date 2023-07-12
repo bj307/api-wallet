@@ -9,4 +9,9 @@ export class UsersService {
 
     console.log(user);
   }
+
+  async list() {
+    const users = await Users.find();
+    return users;
+  }
 }
