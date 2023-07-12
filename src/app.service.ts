@@ -9,7 +9,7 @@ export class AppService {
 
   getConnection() {
     const uri =
-      'mongodb+srv://bjapihouse:bjapihouse@apihouse.z7mxsfg.mongodb.net/?retryWrites=true&w=majority';
+      'mongodb+srv://tatianamayararodrigues:apiwallet@apiwallet.opxrp1k.mongodb.net/?retryWrites=true&w=majority';
 
     mongoose.connect(uri);
   }
