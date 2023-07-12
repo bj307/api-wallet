@@ -25,9 +25,9 @@ export class UsersService {
   }
 
   async getUser(e) {
-    const { email } = e;
+    const email = e;
     console.log(email);
-    const user = await Users.findOne({ email });
+    const user = await Users.findOne(email);
     console.log(user);
 
     return user;
