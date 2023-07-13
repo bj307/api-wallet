@@ -28,8 +28,6 @@ export class UsersService {
     const email = e;
     console.log(email);
     const user = await Users.findOne(email);
-    console.log(user);
-
     return user;
   }
 
