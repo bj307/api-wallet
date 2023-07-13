@@ -11,6 +11,11 @@ export class SessionsController {
     const email = u.email;
     const password = u.password;
     const logar = await this.sessionsService.execute({ email, password });
-    return res.json(logar.token);
+
+    if (logar.error) {
+      return res.status(401).json({ error: logar.error });
+    }
+
+    return res.json(logar);
   }
 }

@@ -14,20 +14,18 @@ export class SessionsService {
     const user = await Users.findOne({ email });
 
     if (!user) {
-      console.log('Usuário não encontrado');
-      return;
+      return { error: 'Usuário não encontrado', token: null };
     }
 
     if (user.password !== password) {
-      console.log('Senha incorreta');
-      return;
+      return { error: 'Senha incorreta', token: null };
     }
 
     const token = sign({}, auth.jwt.secret, {
       expiresIn: auth.jwt.expiresIn,
     });
 
-    const logado = { user, token };
+    const logado = { user, token, error: null };
     return logado;
   }
 }
