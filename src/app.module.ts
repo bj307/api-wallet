@@ -8,10 +8,12 @@ import { TransactionsService } from './transactions/transactions.service';
 import { TransactionsController } from './transactions/transactions.controller';
 import { AdmController } from './adm/adm.controller';
 import { AdmService } from './adm/adm.service';
+import { PixService } from './pix/pix.service';
+import { PixController } from './pix/pix.controller';
 
 @Module({
   imports: [UsersModule],
-  controllers: [AppController, SessionsController, TransactionsController, AdmController],
-  providers: [AppService, SessionsService, TransactionsService, AdmService],
+  controllers: [AppController, SessionsController, TransactionsController, AdmController, PixController],
+  providers: [AppService, SessionsService, TransactionsService, AdmService, PixService],
 })
 export class AppModule {}
