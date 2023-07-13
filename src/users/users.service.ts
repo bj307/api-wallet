@@ -10,8 +10,7 @@ export class UsersService {
     const userExists = await Users.findOne({ email });
 
     if (userExists) {
-      console.log('Email ja existe');
-      return;
+      return { error: 'Email já cadastrado.', user: null };
     }
 
     const user = await Users.create(u);
