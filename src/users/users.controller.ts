@@ -12,7 +12,7 @@ export class UsersController {
     if (user.error) {
       return res.status(401).json({ error: user.error });
     }
-    return user;
+    return res.json(user);
   }
 
   @Get()

@@ -1,6 +1,6 @@
 export default {
   jwt: {
     secret: 'senha',
-    expiresIn: '1d',
+    expiresIn: '6h',
   },
 };

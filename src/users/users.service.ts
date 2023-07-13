@@ -6,6 +6,7 @@ import { UserDTO } from './UserDTO';
 export class UsersService {
   async create(u: UserDTO) {
     const { email } = u;
+    u.saldo = 0;
 
     const userExists = await Users.findOne({ email });
 
@@ -15,7 +16,7 @@ export class UsersService {
 
     const user = await Users.create(u);
 
-    console.log(user);
+    return { user, error: null };
   }
 
   async list() {
@@ -30,5 +31,14 @@ export class UsersService {
     console.log(user);
 
     return user;
+  }
+
+  async updateUser(u: UserDTO) {
+    const { email } = u;
+    const userExists = await Users.findOne({ email });
+    if (userExists) {
+      userExists.saldo = u.saldo;
+      await Users.findByIdAndUpdate(userExists.id, { saldo: userExists.saldo });
+    }
   }
 }
