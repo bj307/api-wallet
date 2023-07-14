@@ -14,13 +14,21 @@ interface IParameter {
   countryCode?: string;
 }
 
+interface IResponse {
+  payload: string;
+}
+
 @Controller('pix')
 export class PixController {
   constructor(private pixService: PixService) {}
 
   @Post()
-  async geraPix(@Body() a: IParameter) {
+  async geraPix(@Body() a: IParameter): Promise<IResponse> {
     const pix = await this.pixService.geraPix(a);
-    return pix;
+
+    const response: IResponse = {
+      payload: pix.payload(),
+    };
+    return response;
   }
 }

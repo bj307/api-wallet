@@ -28,6 +28,6 @@ export class PixService {
       countryCode: 'BR',
     });
 
-    console.log(qrCodePix.payload());
+    return qrCodePix;
   }
 }
