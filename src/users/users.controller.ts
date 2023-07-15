@@ -22,7 +22,8 @@ export class UsersController {
   }
 
   @Get('user')
-  async getUser(@Query() u) {
+  async getUser(@Query('user') u: string) {
+    console.log(u);
     const user = await this.usersService.getUser(u);
     return user;
   }
