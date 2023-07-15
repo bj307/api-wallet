@@ -21,4 +21,19 @@ export class TransactionsService {
       return msg;
     }
   }
+
+  async debit(user: UserDTO, token: string, s: number) {
+    let msg: any;
+    try {
+      const usersService = new UsersService();
+      jwt.verify(token, auth.jwt.secret);
+      const { email } = user;
+      const userExists: UserDTO = await Users.findOne({ email });
+      userExists.saldo -= s;
+      usersService.updateUser(userExists);
+    } catch (error) {
+      msg = { error: 'Token inválido', token: null };
+      return msg;
+    }
+  }
 }
