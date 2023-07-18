@@ -6,6 +6,7 @@ const UserSchema = new Schema({
   email: String,
   password: String,
   saldo: Number,
+  cel: Number,
 });
 
 export default model('User', UserSchema);

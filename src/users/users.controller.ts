@@ -1,4 +1,12 @@
-import { Controller, Post, Body, Get, Query, Response } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  Get,
+  Query,
+  Response,
+  Put,
+} from '@nestjs/common';
 import { UserDTO } from './UserDTO';
 import { UsersService } from './users.service';
 
@@ -26,5 +34,10 @@ export class UsersController {
     console.log(u);
     const user = await this.usersService.getUser(u);
     return user;
+  }
+
+  @Put('user')
+  async updateUser(@Body() u) {
+    await this.usersService.updateUser(u);
   }
 }
